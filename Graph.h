@@ -26,6 +26,8 @@ namespace finalproject {
         void AddEdge(Node* node_1, Node* node_2, double sr_coeff);    
 
         private: 
-        std::map<std::string, int> ticker_to_index_
+        void LoadNodes(std::string filepath);
+        void LoadEdges(std::string filepath);
+        std::map<std::string, Node*> ticker_to_node_
     }
 }
