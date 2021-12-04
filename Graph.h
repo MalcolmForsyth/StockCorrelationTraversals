@@ -1,27 +1,19 @@
 #pragma once 
 
+
+#include <vector>
 #include <string>
 #include <list>
 #include <map>
+#include "Edge.h"
+#include "Node.h"
 
-namespace finalproject {
+
+    class Node;
+    class Edge;
+
     class Graph {
         public:
-
-            class Node {
-                Node(std::string ticker);
-                std::string ticker_; 
-                std::list<Edge*> edges_;
-            }
-
-            class Edge {
-                public:
-                    Edge(Node* node_1, Node* node_2, double sr_coeff)
-                    double sr_coeff_; 
-                    Node* node_1_; 
-                    Node* node_2_;
-            }
-
 
         void AddNode(std::string ticker); 
         void AddEdge(Node* node_1, Node* node_2, double sr_coeff);    
@@ -30,6 +22,5 @@ namespace finalproject {
         std::vector<Node*> nodes_;
         void LoadNodes(std::string filepath);
         void LoadEdges(std::string filepath);
-        std::map<std::string, Node*> ticker_to_node_
-    }
-}
+        std::map<std::string, Node*> ticker_to_node_;
+    };
