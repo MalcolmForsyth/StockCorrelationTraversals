@@ -25,6 +25,7 @@
 
         private: 
         size_t node_count_ = 0;
+        std::map<std::string, Node*> ticker_to_node_;
       
 
 };
