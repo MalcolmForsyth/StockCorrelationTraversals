@@ -20,4 +20,7 @@
 
 
 #### Signatures
-Malcolm Forsyth (johnmf4)
+Malcolm Forsyth (johnmf4)  
+Jordan Smith (jordancs)  
+Alexander Ostrowski (ao11)  
+Grant Hoey (ghoey2)  
