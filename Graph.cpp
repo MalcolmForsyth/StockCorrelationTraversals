@@ -8,6 +8,7 @@
 void Graph::AddNode(std::string ticker) {
     Node* n = new Node(ticker);
     nodes_.push_back(n); 
+    ticker_to_node_.insert({ticker, n});
 }
 
 void Graph::AddEdge(Node* node_1, Node* node_2, double sr_coeff) {

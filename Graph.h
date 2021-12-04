@@ -21,7 +21,7 @@
         void LoadEdges(std::string filepath);  
         std::vector<Node*> nodes_;
                 
-        std::map<std::string, Node*> ticker_to_node_;
+        //std::map<std::string, Node*> ticker_to_node_;
 
         private: 
         size_t node_count_ = 0;
