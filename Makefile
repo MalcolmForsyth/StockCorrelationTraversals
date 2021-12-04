@@ -5,7 +5,7 @@ OBJS = main.o Graph.o Node.o Edge.o BFS.o
 $(EXENAME): $(OBJS)
 	g++ $(OBJS) -o main
 
-BFS.0: BFS.cpp
+BFS.o: BFS.cpp
 	g++ -c -std=c+11 BFS.cpp
 
 Node.o: Node.cpp
