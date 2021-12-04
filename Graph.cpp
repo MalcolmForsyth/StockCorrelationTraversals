@@ -38,3 +38,29 @@ void Graph::LoadNodes(std::string filepath) {
   }
 
 }
+
+void Graph::LoadEdges(std::string filepath) {
+  std::string line;
+  ifstream myfile (filepath);
+  if (myfile.is_open())
+  {
+    getline(myfile, line);
+    while (getline(myfile,line))
+    {
+      std::vector<std::string> vec;
+      stringstream ss(line);
+      while(ss.good()) {
+        std::string substr;
+        getline(ss, substr, ',');
+        vec.push_back(substr);
+      }
+
+      if (std::stod(vec[2]) >= .6) {
+        Node* node_1 = ticker_to_node_.at(vec[0]);
+        Node* node_2 = ticker_to_node_.at(vec[1]);
+        AddEdge(node_1, node_2, std::stod(vec[2]));
+      }
+    }
+    myfile.close();
+  }
+}
