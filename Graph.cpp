@@ -2,13 +2,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <map>
 
 
 void Graph::AddNode(std::string ticker) {
     Node* n = new Node(ticker);
-    size_t index = nodes_.size();
-    nodes_.at(index) = n;   
-    ticker_to_node_.insert(std::pair<std::string, Node*>(ticker, n));
+    nodes_.push_back(n); 
 }
 
 void Graph::AddEdge(Node* node_1, Node* node_2, double sr_coeff) {
@@ -19,12 +18,17 @@ void Graph::AddEdge(Node* node_1, Node* node_2, double sr_coeff) {
 
 
 void Graph::LoadNodes(std::string filepath) {
+  std::cout << "made it into load nodes" << std::endl;
   std::string line;
   std::ifstream myfile (filepath);
+  std::cout << "made if stream" << std::endl;
   if (myfile.is_open())
   {
+    std::cout << "file is open" << std::endl;
     while (getline(myfile,line) )
     {
+      std::cout << "got line " << line << std::endl;
+    
       AddNode(line);
     }
     myfile.close();
