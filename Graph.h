@@ -2,6 +2,7 @@
 
 #include <string>
 #include <list>
+#include <map>
 
 namespace finalproject {
     class Graph {
