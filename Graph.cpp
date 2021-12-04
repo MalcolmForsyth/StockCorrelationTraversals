@@ -18,14 +18,14 @@ Edge::Edge(Node* node_1, Node* node_2, double sr_coeff) {
     sr_coeff_ = sr_coeff;
 }
 
-Graph::AddEdge(Node* node_1, Node* node_2, double sr_coeff) {
+void Graph::AddEdge(Node* node_1, Node* node_2, double sr_coeff) {
     Edge* e = new Edge(node_1, node_2, sr_coeff);
     node_1.edges_.push_front(e);
     node_2.edges_.push_front(e);
 }
 
 
-Graph::LoadNodes(std::string filepath) {
+void Graph::LoadNodes(std::string filepath) {
   std::string line;
   ifstream myfile (filepath);
   if (myfile.is_open())
