@@ -1,0 +1,3 @@
+stock 1: stock 2: spearmen:
+APPL,A,.85
+A,B,.95
