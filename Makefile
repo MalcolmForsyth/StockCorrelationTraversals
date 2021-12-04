@@ -6,7 +6,7 @@ $(EXENAME): $(OBJS)
 	g++ $(OBJS) -o main
 
 BFS.o: BFS.cpp
-	g++ -c -std=c+11 BFS.cpp
+	g++ -c -std=c++11 BFS.cpp
 
 Node.o: Node.cpp
 	g++ -c -std=c++11 Node.cpp
