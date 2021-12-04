@@ -6,16 +6,16 @@ $(EXENAME): $(OBJS)
 	g++ $(OBJS) -o main
 
 Node.o: Node.cpp
-	g++ -c Node.cpp
+	g++ -c -std=c++11 Node.cpp
 
 Edge.o: Edge.cpp 
-	g++ -c Edge.cpp
+	g++ -c -std=c++11 Edge.cpp
 
 Graph.o: Graph.cpp 
-	g++ -c Graph.cpp
+	g++ -std=c++11 -c Graph.cpp
 
 main.o: main.cpp
-	g++ -c main.cpp
+	g++ -std=c++11 -c main.cpp
 
 clean:
 	-rm -f *.o $(EXENAME)

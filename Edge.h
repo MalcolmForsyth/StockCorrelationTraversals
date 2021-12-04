@@ -1,6 +1,8 @@
 #pragma once
 
-namespace finalproject {
+#include "Node.h"
+
+class Node;
 
 class Edge {
     public:
@@ -9,5 +11,3 @@ class Edge {
       Node* node_1_; 
       Node* node_2_;
 };
-
-}

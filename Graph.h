@@ -1,12 +1,17 @@
 #pragma once 
 
+
+#include <vector>
 #include <string>
 #include <list>
 #include <map>
 #include "Edge.h"
 #include "Node.h"
 
-namespace finalproject {
+
+    class Node;
+    class Edge;
+
     class Graph {
         public:
 
@@ -19,4 +24,3 @@ namespace finalproject {
         void LoadEdges(std::string filepath);
         std::map<std::string, Node*> ticker_to_node_;
     };
-}

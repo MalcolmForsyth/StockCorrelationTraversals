@@ -1,4 +1,7 @@
 #include "Graph.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 
 void Graph::AddNode(std::string ticker) {
@@ -10,14 +13,14 @@ void Graph::AddNode(std::string ticker) {
 
 void Graph::AddEdge(Node* node_1, Node* node_2, double sr_coeff) {
     Edge* e = new Edge(node_1, node_2, sr_coeff);
-    node_1.edges_.push_front(e);
-    node_2.edges_.push_front(e);
+    node_1->edges_.push_front(e);
+    node_2->edges_.push_front(e);
 }
 
 
 void Graph::LoadNodes(std::string filepath) {
   std::string line;
-  ifstream myfile (filepath);
+  std::ifstream myfile (filepath);
   if (myfile.is_open())
   {
     while (getline(myfile,line) )
@@ -31,14 +34,14 @@ void Graph::LoadNodes(std::string filepath) {
 
 void Graph::LoadEdges(std::string filepath) {
   std::string line;
-  ifstream myfile (filepath);
+  std::ifstream myfile (filepath);
   if (myfile.is_open())
   {
     getline(myfile, line);
     while (getline(myfile,line))
     {
       std::vector<std::string> vec;
-      stringstream ss(line);
+      std::stringstream ss(line);
       while(ss.good()) {
         std::string substr;
         getline(ss, substr, ',');

@@ -1,10 +1,14 @@
 #pragma once 
 
-namespace finalproject {
-    
-    class Node {
-        Node(std::string ticker);
-        std::string ticker_; 
-        std::list<finalproject::Graph::Edge*> edges_;
-    };
-}
+#include "Edge.h"
+#include <string>
+#include <list>
+
+class Edge;
+   
+class Node {
+    public:
+      Node(std::string ticker);
+      std::string ticker_; 
+      std::list<Edge*> edges_;
+};
