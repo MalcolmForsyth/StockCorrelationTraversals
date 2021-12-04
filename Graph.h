@@ -9,7 +9,7 @@ namespace finalproject {
 
             class Node {
                 Node(std::string ticker);
-                std::string stock_name_; 
+                std::string ticker_; 
                 std::list<Edge*> edges_;
             }
 
@@ -26,6 +26,7 @@ namespace finalproject {
         void AddEdge(Node* node_1, Node* node_2, double sr_coeff);    
 
         private: 
+        std::vector<Node*> nodes_;
         void LoadNodes(std::string filepath);
         void LoadEdges(std::string filepath);
         std::map<std::string, Node*> ticker_to_node_
