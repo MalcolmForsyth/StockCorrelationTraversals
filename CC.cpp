@@ -60,4 +60,6 @@ vector<vector<string>> ConnectedComponents::connectTheComponents() {
             connected_components.push_back(component);
         }
     }
+
+    return connected_components;
 }
