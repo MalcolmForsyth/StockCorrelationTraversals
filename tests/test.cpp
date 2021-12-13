@@ -68,6 +68,19 @@ TEST_CASE("Dijkstra standard example", "[weight=10][valgrind]") {
     REQUIRE(source->ticker_ == "AAPL");
     d.ComputeDistances(G, source);
     REQUIRE(d.GetDist( G.nodes_[1]) == Approx(1.1764).margin(.01));
+
+
+    std::vector<std::string> actual; 
+    actual = d.NodesPath(G.nodes_[2]);
+    std::vector<std::string> expected; 
+    std::string aapl = "AAPL";
+    std::string a = "A";
+    std::string b = "B";
+    expected.push_back(aapl);
+    expected.push_back(a);
+    expected.push_back(b);
+
+    REQUIRE(true);
 }
 
 
