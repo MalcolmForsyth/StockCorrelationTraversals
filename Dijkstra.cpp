@@ -44,7 +44,13 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
     }
 
     for (auto it = node_map.begin(); it != node_map.end(); ++it) {
-        distances_.insert({it->first, it->second->dist_});
+
+        if (it->second->dist_ < 10000000) {
+            distances_.insert({it->first, it->second->dist_});
+        } else {
+            distances_.insert({it->first, -1.0});
+        }
+        
         
         std::cout << it->first->ticker_ << " " << it->second->dist_ << std::endl;
         delete it->second;
@@ -59,6 +65,10 @@ double Dijkstra::GetDist(Node* node) {
 }
 
 std::vector<std::string> Dijkstra::NodesPath(Node* node) {
+
+    if (GetDist(node) < 0) {
+        return std::vector<std::string>();
+    }
     std::cout << "starting nodespath" << std::endl;
     std::vector<std::string> out; 
     Node* curr = node;
