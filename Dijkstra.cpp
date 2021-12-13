@@ -25,7 +25,6 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
         DjikNode* n = q[0];
         std::pop_heap(q.begin(), q.end());
         q.pop_back();
-        std::cout << n->dist_ << std::endl;
         for (Edge* e : n->node_->edges_) {
             Node* neighbor;
             if (e->node_1_ == n->node_) {
@@ -51,8 +50,6 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
             distances_.insert({it->first, -1.0});
         }
         
-        
-        std::cout << it->first->ticker_ << " " << it->second->dist_ << std::endl;
         delete it->second;
     } 
 
@@ -69,27 +66,16 @@ std::vector<std::string> Dijkstra::NodesPath(Node* node) {
     if (GetDist(node) < 0) {
         return std::vector<std::string>();
     }
-    std::cout << "starting nodespath" << std::endl;
     std::vector<std::string> out; 
     Node* curr = node;
     while (curr != source_) {
-        std::cout << curr->ticker_ << std::endl;
+
 
         out.insert(out.begin(), curr->ticker_);
-        std::cout << "inserted" << std::endl;
         curr = previous_[curr];
-
-        std::cout << "updated" << std::endl;
     }
 
     out.insert(out.begin(), source_->ticker_);
-
-    std::cout << "inserted AAPL" << std::endl;
-
-
-    for (std::string s : out) {
-        std::cout << s << std::endl;
-    }
 
     return out;
  
