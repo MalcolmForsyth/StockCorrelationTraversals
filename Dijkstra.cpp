@@ -15,19 +15,13 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
         n->dist_ = DBL_MAX - 1000.0;
         n->visited_ = false;
         q.push_back(n);
-        std::cout << n << std::endl;
         node_map.insert({G.nodes_.at(i), n});
     }
 
     node_map[source]->dist_ = 0;
     make_heap(q.begin(), q.end(), Comp());
-    for (size_t i = 0; i < q.size(); ++i) {
-        std::cout << q.at(i)->dist_ << std::endl;
-        std::cout << node_map[q.at(i)->node_]->dist_ << std::endl;
-    }
 
     while (!q.empty()) {
-        std::cout << q.size() << std::endl;
         DjikNode* n = q[0];
         std::pop_heap(q.begin(), q.end());
         q.pop_back();
@@ -40,7 +34,7 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
                 neighbor = e->node_1_;
             }
 
-            int alt_dist = n->dist_ + 1/(e->sr_coeff_);
+            double alt_dist = (double) n->dist_ + ( (double) 1/ (double) (e->sr_coeff_));
             if (alt_dist < node_map[neighbor]->dist_) {
                 node_map[neighbor]->dist_ = alt_dist;
                 previous_[neighbor] = n->node_;

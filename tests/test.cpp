@@ -68,7 +68,6 @@ TEST_CASE("Dijkstra standard example", "[weight=10][valgrind]") {
     REQUIRE(source->ticker_ == "AAPL");
     d.ComputeDistances(G, source);
     REQUIRE(d.GetDist( G.nodes_[1]) == Approx(1.1764).margin(.01));
-
 }
 
 
