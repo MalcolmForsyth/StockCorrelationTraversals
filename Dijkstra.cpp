@@ -45,6 +45,8 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
 
     for (auto it = node_map.begin(); it != node_map.end(); ++it) {
         distances_.insert({it->first, it->second->dist_});
+        
+        std::cout << it->first->ticker_ << " " << it->second->dist_ << std::endl;
         delete it->second;
     } 
 
