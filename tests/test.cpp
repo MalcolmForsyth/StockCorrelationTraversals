@@ -59,7 +59,7 @@ TEST_CASE("Load Edges does not create certain edges below threshold", "[weight=2
     REQUIRE(test == compare);
 }
 
-TEST_CASE("Dijkstra standard example", "[weight=10][valgrind]") {
+TEST_CASE("Dijkstra single-edge example", "[weight=10][valgrind]") {
     Graph G;
     G.LoadNodes("tests/test_data/test_nodes.txt");
     G.LoadEdges("tests/test_data/test_edges.txt");
@@ -67,21 +67,45 @@ TEST_CASE("Dijkstra standard example", "[weight=10][valgrind]") {
     Node* source = G.nodes_[0];
     REQUIRE(source->ticker_ == "AAPL");
     d.ComputeDistances(G, source);
-    REQUIRE(d.GetDist( G.nodes_[1]) == Approx(1.1764).margin(.01));
-
+    REQUIRE(d.GetDist( G.nodes_[1]) == Approx(1.176).margin(.01));
 
     std::vector<std::string> actual; 
-    actual = d.NodesPath(G.nodes_[2]);
-    std::vector<std::string> expected; 
-    std::string aapl = "AAPL";
-    std::string a = "A";
-    std::string b = "B";
-    expected.push_back(aapl);
-    expected.push_back(a);
-    expected.push_back(b);
+    actual = d.NodesPath(G.nodes_[1]);
+    std::vector<std::string> expected = {"AAPL", "A"};
 
-    REQUIRE(true);
+    REQUIRE(expected == actual);
 }
 
 
 
+TEST_CASE("Dijkstra multi-edge example", "[weight=10][valgrind]") {
+    Graph G;
+    G.LoadNodes("tests/test_data/test_nodes.txt");
+    G.LoadEdges("tests/test_data/test_edges.txt");
+    Dijkstra d;
+    Node* source = G.nodes_[0];
+    REQUIRE(source->ticker_ == "AAPL");
+    d.ComputeDistances(G, source);
+    REQUIRE(d.GetDist( G.nodes_[2]) == Approx(2.42).margin(.01));
+
+
+    std::vector<std::string> actual; 
+    actual = d.NodesPath(G.nodes_[2]);
+    std::vector<std::string> expected = {"AAPL", "A", "B"};
+
+    REQUIRE(expected == actual);
+}
+
+TEST_CASE("Dijkstra no path example", "[weight=10][valgrind]") {
+    Graph G;
+    G.LoadNodes("tests/test_data/test_nodes.txt");
+    G.LoadEdges("tests/test_data/test_edges.txt");
+    Dijkstra d;
+    Node* source = G.nodes_[0];
+    REQUIRE(source->ticker_ == "AAPL");
+    d.ComputeDistances(G, source);
+    REQUIRE(d.GetDist( G.nodes_[4]) == Approx(-1).margin(.01));
+
+
+    REQUIRE(d.NodesPath(G.nodes_[4]).size() == 0);
+}

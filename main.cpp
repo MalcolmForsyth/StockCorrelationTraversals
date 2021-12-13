@@ -47,7 +47,6 @@ int main(int argc, char *argv[]) {
     if (algorithm == "C") {
         std::cout<<"WIP"<<std::endl;
     }
-
     
     return 0;
 }
