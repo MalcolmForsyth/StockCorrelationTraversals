@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     std::cout<<"Dijkstras (B)"<<std::endl;
     std::cout<<"Connected Components (C)"<<std::endl;
     std::cin>>algorithm;
-    if (algorithm != "A" || algorithm != "B" || algorithm != "C") {
+    if (!(algorithm == "A" || algorithm == "B" || algorithm == "C")) {
         std::cout<<"Not a valid algorithm, please try again"<<std::endl;
         return 0;
     }

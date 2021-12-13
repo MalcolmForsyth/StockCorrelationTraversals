@@ -109,5 +109,3 @@ TEST_CASE("Dijkstra no path example", "[weight=10][valgrind]") {
 
     REQUIRE(d.NodesPath(G.nodes_[4]).size() == 0);
 }
-
-
