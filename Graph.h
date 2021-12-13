@@ -19,6 +19,7 @@
             void AddEdge(Node* node_1, Node* node_2, double sr_coeff);  
             void LoadNodes(std::string filepath);
             void LoadEdges(std::string filepath);  
+            Node* getNode(std::string ticker);
             std::vector<Node*> nodes_;
                 
         //std::map<std::string, Node*> ticker_to_node_;
