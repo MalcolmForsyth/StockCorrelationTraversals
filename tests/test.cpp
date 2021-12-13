@@ -49,6 +49,16 @@ TEST_CASE("BFS standard example", "[weight=10][valgrind]") {
     REQUIRE(test == compare);
 }
 
+TEST_CASE("BFS non-connected", "[weight=10][valgrind]") {
+    Graph G;
+    G.LoadNodes("tests/test_data/test_nodes.txt");
+    G.LoadEdges("tests/test_data/test_edges.txt");
+    BFS bfs;
+    std::vector<std::string> test = bfs.traverse(G.nodes_[4]);
+    std::vector<std::string> compare = {"TSLA"};
+    REQUIRE(test == compare);
+}
+
 TEST_CASE("Load Edges does not create certain edges below threshold", "[weight=20][valgrind]") {
     Graph G;
     G.LoadNodes("tests/test_data/test_nodes.txt");
