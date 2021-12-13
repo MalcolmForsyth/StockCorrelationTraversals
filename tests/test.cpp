@@ -105,6 +105,9 @@ TEST_CASE("Dijkstra no path example", "[weight=10][valgrind]") {
     REQUIRE(source->ticker_ == "AAPL");
     d.ComputeDistances(G, source);
     REQUIRE(d.GetDist( G.nodes_[4]) == Approx(-1).margin(.01));
+
+
+    REQUIRE(d.NodesPath(G.nodes_[4]).size() == 0);
 }
 
 
