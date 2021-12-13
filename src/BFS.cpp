@@ -1,5 +1,5 @@
-#include "BFS.h"
-#include "Graph.h"
+#include "../include/BFS.h"
+#include "../include/Graph.h"
 #include <vector>
 #include <queue>
 #include <iostream>

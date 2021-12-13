@@ -1,4 +1,4 @@
-#include "Edge.h"
+#include "../include/Edge.h"
 
 
 Edge::Edge(Node* node_1, Node* node_2, double sr_coeff) {

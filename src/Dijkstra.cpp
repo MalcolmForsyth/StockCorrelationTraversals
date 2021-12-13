@@ -1,4 +1,4 @@
-#include "Dijkstra.h"
+#include "../include/Dijkstra.h"
 #include <float.h>
 #include <queue>
 #include <algorithm>

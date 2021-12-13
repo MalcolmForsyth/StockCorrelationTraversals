@@ -1,4 +1,4 @@
-#include "CC.h"
+#include "../include/CC.h"
 #include <stack>
 
 using std::stack;

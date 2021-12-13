@@ -1,6 +1,6 @@
-#include "Graph.h"
-#include "BFS.h"
-#include "Dijkstra.h"
+#include "include/Graph.h"
+#include "include/BFS.h"
+#include "include/Dijkstra.h"
 #include <iostream>
 #include <string>
 int main(int argc, char *argv[]) {
@@ -41,6 +41,11 @@ int main(int argc, char *argv[]) {
     }
     //if user decides to use Dijstras
     if (algorithm == "B") {
+        if (start == NULL) {
+            std::cout<<"Not a valid ticker, please try again"<<std::endl;
+            return 0;
+        }
+        dijkstra.ComputeDistances(G, start);
         std::cout<<"WIP"<<std::endl;
     }
     //if used decides to use Connected components

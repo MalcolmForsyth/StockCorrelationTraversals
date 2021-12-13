@@ -17,20 +17,20 @@ $(EXENAME): $(OBJS)
 $(TEST): $(TEST_OBJS)
 	g++ $(TEST_OBJS) -o test
 
-BFS.o: BFS.cpp
-	g++ -c -std=c++11 BFS.cpp
+BFS.o: src/BFS.cpp
+	g++ -c -std=c++11 src/BFS.cpp
 
-Node.o: Node.cpp
-	g++ -c -std=c++11 Node.cpp
+Node.o: src/Node.cpp
+	g++ -c -std=c++11 src/Node.cpp
 
-Edge.o: Edge.cpp 
-	g++ -c -std=c++11 Edge.cpp
+Edge.o: src/Edge.cpp 
+	g++ -c -std=c++11 src/Edge.cpp
 
-Graph.o: Graph.cpp 
-	g++ -std=c++11 -c Graph.cpp
+Graph.o: src/Graph.cpp 
+	g++ -std=c++11 -c src/Graph.cpp
 
-Dijkstra.o: Dijkstra.cpp 
-	g++ -std=c++11 -c Dijkstra.cpp 
+Dijkstra.o: src/Dijkstra.cpp 
+	g++ -std=c++11 -c src/Dijkstra.cpp 
 
 main.o: main.cpp
 	g++ -std=c++11 -c main.cpp
