@@ -2,7 +2,7 @@
 EXENAME = main 
 TEST = test
 OBJS = main.o Graph.o Node.o Edge.o BFS.o
-TEST_OBJS = test.o catchmain.o
+TEST_OBJS = test.o catchmain.o Graph.o Node.o Edge.o BFS.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic

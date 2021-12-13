@@ -4,13 +4,16 @@
 #include <queue>
 #include <iostream>
 
-void BFS::traverse(Node* start) {
+std::vector<std::string> BFS::traverse(Node* start) {
+    std::vector<std::string> vector_nodes;
     q_.push(start);
     traved_.insert({start, true});
     while (!q_.empty()) {
         Node* curr = q_.front();
+        //std::cout<<curr->ticker_<<std::endl;
         q_.pop();
-        std::cout << curr->ticker_ << " | ";
+        vector_nodes.push_back(curr->ticker_);
+        //std::cout << curr->ticker_ << " | ";
         for (Edge * e : curr->edges_) {
             Node* neighbor;
             if (e->node_1_ != curr) {
@@ -18,10 +21,14 @@ void BFS::traverse(Node* start) {
             } else {
                 neighbor = e->node_2_;
             }
-            if (traved_.find(neighbor) != traved_.end()) {
+            //std::cout<<neighbor->ticker_<<std::endl;
+            if (traved_.find(neighbor) == traved_.end() ) {
+                //std::cout<<"here"<<std::endl;
                 q_.push(neighbor);
                 traved_.insert({neighbor, true});
             }
         }
     }
+    
+    return vector_nodes;
 }

@@ -15,17 +15,17 @@
     class Graph {
         public:
 
-        void AddNode(std::string ticker); 
-        void AddEdge(Node* node_1, Node* node_2, double sr_coeff);  
-        void LoadNodes(std::string filepath);
-        void LoadEdges(std::string filepath);  
-        std::vector<Node*> nodes_;
+            void AddNode(std::string ticker); 
+            void AddEdge(Node* node_1, Node* node_2, double sr_coeff);  
+            void LoadNodes(std::string filepath);
+            void LoadEdges(std::string filepath);  
+            std::vector<Node*> nodes_;
                 
         //std::map<std::string, Node*> ticker_to_node_;
 
         private: 
-        size_t node_count_ = 0;
-        std::map<std::string, Node*> ticker_to_node_;
+            size_t node_count_ = 0;
+            std::map<std::string, Node*> ticker_to_node_;
       
 
 };

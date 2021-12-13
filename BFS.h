@@ -4,7 +4,7 @@
 
 class BFS {
     public:
-        void traverse(Node* start);
+        std::vector<std::string> traverse(Node* start);
     private:
         std::queue<Node*> q_;
         std::map<Node*, bool> traved_;

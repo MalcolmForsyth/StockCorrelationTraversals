@@ -1,4 +1,5 @@
-APPL
+AAPL
 A
 B
 MRNA
+TSLA
