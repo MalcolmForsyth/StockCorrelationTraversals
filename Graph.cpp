@@ -4,6 +4,9 @@
 #include <sstream>
 #include <map>
 
+Node* Graph::getNode(std::string ticker) {
+   return ticker_to_node_[ticker];
+}
 
 void Graph::AddNode(std::string ticker) {
     Node* n = new Node(ticker);
