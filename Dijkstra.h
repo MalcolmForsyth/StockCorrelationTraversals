@@ -5,7 +5,9 @@
 class Dijkstra {
     public: 
         void ComputeDistances(Graph& G, Node* source);
-        std::map<Node*, double> GetDistances();
+        std::vector<std::string> NodesPath(Node* node);
+        double GetDist(Node* node);
+
         struct DjikNode {
             Node* node_;
             double dist_; 
@@ -24,5 +26,6 @@ class Dijkstra {
 
     private: 
         std::map<Node*, Node*> previous_;  
-        std::map<Node*, double> distances_;  
+        std::map<Node*, double> distances_; 
+        Node* source_; 
 };

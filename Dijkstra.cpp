@@ -4,13 +4,14 @@
 #include <algorithm>
 
 void Dijkstra::ComputeDistances(Graph& G, Node* source) {
+    source_ = source;
     std::vector<DjikNode> q;
     std::map<Node*, DjikNode> node_map;
     for (int i = 0; i < G.nodes_.size(); ++i) {
         previous_.insert({G.nodes_.at(i), NULL});
         DjikNode n; 
         n.node_ = G.nodes_.at(i);
-        n.dist_ = DBL_MAX;
+        n.dist_ = DBL_MAX - 1000.0;
         n.visited_ = false;
         q.push_back(n);
         node_map.insert({G.nodes_.at(i), n});
@@ -38,5 +39,26 @@ void Dijkstra::ComputeDistances(Graph& G, Node* source) {
         }
 
     }
+
+    for (auto it = node_map.begin(); it != node_map.end(); ++it) {
+        distances_.insert({it->first, it->second.dist_});
+    }
     
+}
+
+double Dijkstra::GetDist(Node* node) {
+    return distances_[node];
+}
+
+std::vector<std::string> Dijkstra::NodesPath(Node* node) {
+    std::vector<std::string> out; 
+    while (previous_[node] != source_) {
+        out.insert(out.begin(), previous_[node]->ticker_);
+        node = previous_[node];
+    }
+
+    out.insert(out.begin(), source_->ticker_);
+
+
+     
 }
