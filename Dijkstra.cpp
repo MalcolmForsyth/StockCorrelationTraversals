@@ -60,27 +60,27 @@ double Dijkstra::GetDist(Node* node) {
 
 std::vector<std::string> Dijkstra::NodesPath(Node* node) {
     std::cout << "starting nodespath" << std::endl;
-    std::cout << node->ticker_ << std::endl;
     std::vector<std::string> out; 
     Node* curr = node;
     while (curr != source_) {
         std::cout << curr->ticker_ << std::endl;
+
         out.insert(out.begin(), curr->ticker_);
         std::cout << "inserted" << std::endl;
         curr = previous_[curr];
-        std::cout << curr->ticker_ << std::endl;
+
         std::cout << "updated" << std::endl;
     }
 
     out.insert(out.begin(), source_->ticker_);
 
-    std::cout << "printing path:" << std::endl;
-/*
+    std::cout << "inserted AAPL" << std::endl;
+
+
     for (std::string s : out) {
         std::cout << s << std::endl;
     }
 
-*/
-
-     
+    return out;
+ 
 }

@@ -72,15 +72,9 @@ TEST_CASE("Dijkstra standard example", "[weight=10][valgrind]") {
 
     std::vector<std::string> actual; 
     actual = d.NodesPath(G.nodes_[2]);
-    std::vector<std::string> expected; 
-    std::string aapl = "AAPL";
-    std::string a = "A";
-    std::string b = "B";
-    expected.push_back(aapl);
-    expected.push_back(a);
-    expected.push_back(b);
+    std::vector<std::string> expected = {"AAPL", "A", "B"};
 
-    REQUIRE(true);
+    REQUIRE(expected == actual);
 }
 
 
