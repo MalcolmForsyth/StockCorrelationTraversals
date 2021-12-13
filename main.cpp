@@ -45,8 +45,28 @@ int main(int argc, char *argv[]) {
             std::cout<<"Not a valid ticker, please try again"<<std::endl;
             return 0;
         }
+        std::string destination;
+        std::cout<<"Type the ticker of the stock you would like to run Dijstra's to"<<std::endl;
+        std::cin>>destination;
+        Node * end = G.getNode(destination);
+        if (end == NULL) {
+            std::cout<<"Not a valid ticker, please try again"<<std::endl;
+            return 0;
+        }
         dijkstra.ComputeDistances(G, start);
-        std::cout<<"WIP"<<std::endl;
+        std::vector<std::string> v;
+        v = dijkstra.NodesPath(end);
+        //std::cout<<G.nodes_[238]->ticker_<<std::endl;
+        double distance = dijkstra.GetDist(end);
+        if (v.size() == 0) {
+            std::cout<<"There is no path between these two stocks"<<std::endl;
+            return 0;
+        }
+        for (std::string output : v) {
+            std::cout<<"Printing path"<<std::endl;
+            std::cout<<output<<" ";
+        }
+        std::cout<<"This path has a disatance of "<<distance<<std::endl;
     }
     //if used decides to use Connected components
     if (algorithm == "C") {
