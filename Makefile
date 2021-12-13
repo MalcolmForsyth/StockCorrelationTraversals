@@ -1,8 +1,8 @@
 
 EXENAME = main 
 TEST = test
-OBJS = main.o Graph.o Node.o Edge.o BFS.o
-TEST_OBJS = test.o catchmain.o Graph.o Node.o Edge.o BFS.o
+OBJS = main.o Graph.o Node.o Edge.o BFS.o Dijkstra.o
+TEST_OBJS = test.o catchmain.o Graph.o Node.o Edge.o BFS.o Dijkstra.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -28,6 +28,9 @@ Edge.o: Edge.cpp
 
 Graph.o: Graph.cpp 
 	g++ -std=c++11 -c Graph.cpp
+
+Dijkstra.o: Dijkstra.cpp 
+	g++ -std=c++11 -c Dijkstra.cpp 
 
 main.o: main.cpp
 	g++ -std=c++11 -c main.cpp
