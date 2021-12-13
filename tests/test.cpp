@@ -3,6 +3,7 @@
 #include "../Edge.h"
 #include "../Node.h"
 #include "../BFS.h"
+#include "../Dijkstra.h"
 
 #include <vector>
 #include <iostream>
@@ -56,6 +57,18 @@ TEST_CASE("Load Edges does not create certain edges below threshold", "[weight=2
     std::vector<std::string> test = bfs.traverse(G.nodes_[0]);
     std::vector<std::string> compare = {"AAPL"};
     REQUIRE(test == compare);
+}
+
+TEST_CASE("Dijkstra standard example", "[weight=10][valgrind]") {
+    Graph G;
+    G.LoadNodes("tests/test_data/test_nodes.txt");
+    G.LoadEdges("tests/test_data/test_edges.txt");
+    Dijkstra d;
+    Node* source = G.nodes_[0];
+    REQUIRE(source->ticker_ == "AAPL");
+    d.ComputeDistances(G, source);
+    REQUIRE(d.GetDist( G.nodes_[1]) == Approx(1.1764).margin(.01));
+
 }
 
 

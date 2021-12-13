@@ -19,8 +19,8 @@ class Dijkstra {
 
         };
         struct Comp { 
-            bool operator()(const DjikNode& a,const DjikNode& b) const { 
-                return a.dist_ > b.dist_;
+            bool operator()(const DjikNode* a,const DjikNode* b) const { 
+                return a->dist_ > b->dist_;
             }    
         }; 
 
