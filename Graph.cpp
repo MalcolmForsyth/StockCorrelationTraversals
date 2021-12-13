@@ -33,16 +33,13 @@ void Graph::LoadNodes(std::string filepath) {
 }
 
 void Graph::LoadEdges(std::string filepath) {
-  std::cout << "in load edges" << std::endl;
   std::string line;
   std::ifstream myfile (filepath);
   if (myfile.is_open())
   {
-    std::cout << "open" << std::endl;
     getline(myfile, line);
     while (getline(myfile,line))
     {
-      std::cout << "getting line" << std::endl;
       std::vector<std::string> vec;
       std::stringstream ss(line);
       while(ss.good()) {
