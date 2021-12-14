@@ -119,3 +119,17 @@ TEST_CASE("Dijkstra no path example", "[weight=10][valgrind]") {
 
     REQUIRE(d.NodesPath(G.nodes_[4]).size() == 0);
 }
+
+TEST_CASE("CC", "[weight=10][valgrind]") {
+    Graph G;
+    G.LoadNodes("tests/test_data/test_nodes.txt");
+    G.LoadEdges("tests/test_data/test_edges.txt");
+    CC c(G);
+    Node* source = G.nodes_[0];
+    REQUIRE(source->ticker_ == "AAPL");
+    std::vector<std::vector<std::string>> test;
+    test = c.connectTheComponents();
+
+
+    REQUIRE(true);
+}

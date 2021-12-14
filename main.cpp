@@ -4,9 +4,19 @@
 #include <iostream>
 #include <string>
 int main(int argc, char *argv[]) {
+    std::string path;
+    std::cout<<"Welcome to our project"<<std::endl;
+    std::cout<<"Press 1 if you would like to use our file for the S&P 500"<<std::endl;
+    std::cout<<"Otherwise, enter your own filepath with quotations"<<std::endl;
+    std::cin>> path;
     Graph G;
-    G.LoadNodes("data_processing/datasets/s&p_500.txt");
-    G.LoadEdges("data_processing/datasets/spearman_coefficients.csv");
+    if (path == "1") {
+        G.LoadNodes("data_processing/datasets/s&p_500.txt");
+        G.LoadEdges("data_processing/datasets/spearman_coefficients.csv");
+    } else {
+        G.LoadNodes(path);
+        G.LoadEdges(path);
+    }
     BFS bfs;
     Dijkstra dijkstra;
 
@@ -56,21 +66,36 @@ int main(int argc, char *argv[]) {
         dijkstra.ComputeDistances(G, start);
         std::vector<std::string> v;
         v = dijkstra.NodesPath(end);
-        //std::cout<<G.nodes_[238]->ticker_<<std::endl;
         double distance = dijkstra.GetDist(end);
         if (v.size() == 0) {
-            std::cout<<"There is no path between these two stocks"<<std::endl;
+            Dijkstra d;
+            d.ComputeDistances(G, end);
+            std::vector<std::string> v2;
+            v2 = d.NodesPath(start);
+            if (v2.size() == 0) {
+                std::cout<<"There is no path between these two stocks"<<std::endl;
+                return 0;
+            }
+            for (int i = v2.size() - 1; i >=0; i--) {
+                //std::cout<<i<<std::endl;
+                std::cout<<v2[i]<<" ";
+            }
+            std::cout<<" : This path has a distance of "<<(d.GetDist(start))<<std::endl;
             return 0;
+        }else {
+            for (std::string output : v) {
+                std::cout<<output<<" ";
+            }
+        std::cout<<": This path has a distance of "<<distance<<std::endl;
         }
-        for (std::string output : v) {
-            std::cout<<"Printing path"<<std::endl;
-            std::cout<<output<<" ";
-        }
-        std::cout<<"This path has a disatance of "<<distance<<std::endl;
     }
     //if used decides to use Connected components
     if (algorithm == "C") {
-        std::cout<<"WIP"<<std::endl;
+        if (start == NULL) {
+            std::cout<<"Not a valid ticker, please try again"<<std::endl;
+            return 0;
+        }
+        //std::cout<<"WIP"<<std::endl;
     }
     
     return 0;

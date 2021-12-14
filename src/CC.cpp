@@ -1,11 +1,12 @@
 #include "../include/CC.h"
 #include <stack>
+#include <map>
 
 using std::stack;
 
-vector<Node*> ConnectedComponents::DFSTraverse(Node* node, Map<Node*, bool> &traved_, vector<Node*> adjacent_nodes) {
+vector<Node*> ConnectedComponenets::DFSTraverse(Node* node, map<Node*, bool> &traved_, vector<Node*> adjacent_nodes) {
     traved_.insert({node, true});
-    adjacent_nodes.push_back(node->ticker_);
+    adjacent_nodes.push_back(node);
     for (Edge * edge : node->edges_) {
         Node* neighbor;
         if (edge->node_1_ != node) {
@@ -19,7 +20,7 @@ vector<Node*> ConnectedComponents::DFSTraverse(Node* node, Map<Node*, bool> &tra
     }
 }
 
-void ConnectedComponents::fillOrder(Node* node, Map<Node*, bool> &traved_, stack<int> &stack) {
+void ConnectedComponenets::fillOrder(Node* node, map<Node*, bool> &traved_, std::stack<int> &stack) {
     traved_.insert({node, true});
     for (Edge * edge : node->edges_) {
         Node* neighbor;
@@ -35,12 +36,12 @@ void ConnectedComponents::fillOrder(Node* node, Map<Node*, bool> &traved_, stack
     stack.push(node);
 }
 
-ConnectedComponents::ConnectedComponents(Graph graph) {
+ConnectedComponenets::ConnectedComponenets(Graph graph) {
     graph_ = graph;
     traved_ = map<Node*, bool>();
 }
 
-vector<vector<string>> ConnectedComponents::connectTheComponents() {
+vector<vector<string>> ConnectedComponenets::connectTheComponents() {
     stack<Node*> stack;
     traved_ = map<Node*, bool>();
     for (Node* node : graph.nodes) {
